@@ -107,6 +107,7 @@ export default function CreateShareLinkForm({
         resourceId: z.number({ message: t("shareErrorSelectResource") }),
         resourceName: z.string(),
         resourceUrl: z.string(),
+        path: z.string().optional(),
         timeUnit: z.string(),
         timeValue: z.coerce.number<number>().int().positive().min(1),
         title: z.string().optional()
@@ -208,7 +209,8 @@ export default function CreateShareLinkForm({
                             resource:
                                 values.resourceName ||
                                 "Resource" + values.resourceId
-                        })
+                        }),
+                    path: values.path
                 }
             )
             .catch((e) => {
@@ -368,6 +370,22 @@ export default function CreateShareLinkForm({
                                                             </Command>
                                                         </PopoverContent>
                                                     </Popover>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+
+                                        <FormField
+                                            control={form.control}
+                                            name="path"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel>
+                                                        {t("sharePathOptional")}
+                                                    </FormLabel>
+                                                    <FormControl>
+                                                        <Input {...field} />
+                                                    </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
                                             )}

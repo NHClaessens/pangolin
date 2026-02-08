@@ -831,6 +831,7 @@ export const resourceAccessToken = sqliteTable("resourceAccessToken", {
     resourceId: integer("resourceId")
         .notNull()
         .references(() => resources.resourceId, { onDelete: "cascade" }),
+    path: text("path"),
     tokenHash: text("tokenHash").notNull(),
     sessionLength: integer("sessionLength").notNull(),
     expiresAt: integer("expiresAt"),
