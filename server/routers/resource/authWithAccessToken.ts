@@ -167,7 +167,7 @@ export async function authWithAccessToken(
         return response<AuthWithAccessTokenResponse>(res, {
             data: {
                 session: token,
-                redirectUrl: `${resource.ssl ? "https" : "http"}://${resource.fullDomain}`
+                redirectUrl: `${resource.ssl ? "https" : "http"}://${resource.fullDomain}${tokenItem.path ? `/${tokenItem.path}` : ""}`
             },
             success: true,
             error: false,
