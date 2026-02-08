@@ -134,6 +134,7 @@
   "shareErrorCreateDescription": "創建共享連結時出錯",
   "shareCreateDescription": "任何具有此連結的人都可以訪問資源",
   "shareTitleOptional": "標題 (可選)",
+  "sharePathOptional": "路徑 (可選)",
   "expireIn": "過期時間",
   "neverExpire": "永不過期",
   "shareExpireDescription": "過期時間是連結可以使用並提供對資源的訪問時間。 此時間後，連結將不再工作，使用此連結的用戶將失去對資源的訪問。",
