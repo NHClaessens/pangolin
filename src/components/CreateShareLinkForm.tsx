@@ -377,11 +377,13 @@ export default function CreateShareLinkForm({
 
                                         <FormField
                                             control={form.control}
-                                            name="path"
+                                            name="title"
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel>
-                                                        {t("sharePathOptional")}
+                                                        {t(
+                                                            "shareTitleOptional"
+                                                        )}
                                                     </FormLabel>
                                                     <FormControl>
                                                         <Input {...field} />
@@ -393,13 +395,11 @@ export default function CreateShareLinkForm({
 
                                         <FormField
                                             control={form.control}
-                                            name="title"
+                                            name="path"
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel>
-                                                        {t(
-                                                            "shareTitleOptional"
-                                                        )}
+                                                        {t("sharePathOptional")}
                                                     </FormLabel>
                                                     <FormControl>
                                                         <Input {...field} />
