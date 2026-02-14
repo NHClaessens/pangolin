@@ -14,6 +14,7 @@ import { verifyResourceAccessToken } from "@server/auth/verifyResourceAccessToke
 import config from "@server/lib/config";
 import stoi from "@server/lib/stoi";
 import { logAccessAudit } from "#dynamic/lib/logAccessAudit";
+import { normalizePostAuthPath } from "@server/lib/normalizePostAuthPath";
 
 const authWithAccessTokenBodySchema = z.strictObject({
     accessToken: z.string(),
@@ -163,6 +164,12 @@ export async function authWithAccessToken(
             userAgent: req.headers["user-agent"],
             requestIp: req.ip
         });
+
+        let redirectUrl = `${resource.ssl ? "https" : "http"}://${resource.fullDomain}`;
+        const postAuthPath = normalizePostAuthPath(resource.postAuthPath);
+        if (postAuthPath) {
+            redirectUrl = redirectUrl + postAuthPath;
+        }
 
         return response<AuthWithAccessTokenResponse>(res, {
             data: {
